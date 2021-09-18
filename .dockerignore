@@ -1,0 +1,10 @@
+# No reason to copy node_modules into the container 
+# since we've already installed dependencies at this point
+node_modules
+
+# Dockerfile is needed only when we build an image
+Dockerfile
+
+.dockerignore
+.git
+.gitignore
