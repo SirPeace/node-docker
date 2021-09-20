@@ -30,7 +30,11 @@ $ docker image rm <image>
 
 # Sync local directory to /app except for node_modules
 -v $(pwd):/app -v /app/node_modules 
+
+# Read-only volume (can't modify files on our local machine)
+-v $(pwd):/app:ro
 ```
+
 ```
 $ docker run -d -p <port>:<port> -v <path>:<path> -v <path> --name <name> <image>
 ```
