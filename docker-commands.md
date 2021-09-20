@@ -21,6 +21,8 @@ $ docker image rm <image>
 **[-p]** Bind local port to container port \
 **[--name]** Set the container name \
 **[-v]** Declare the volume (*Volumes can overwrite themselves by the path nesting (like css selectors), so to prevent something from being synced (e.g. node_modules) you must declare another, more nested volume*):
+**[--env]** Pass the env parameter (e.g. PORT=4000)
+**[--env-file]** Pass the path to .env file (e.g. ./.env)
 ```
 # Bind-mount volume
 -v <local-path>:<container-path> 
@@ -36,7 +38,7 @@ $ docker image rm <image>
 ```
 
 ```
-$ docker run -d -p <port>:<port> -v <path>:<path> -v <path> --name <name> <image>
+$ docker run -d -p <port>:<port> -v <path>:<path> -v <path> --name <name> --env-file <path> <image>
 ```
 
 ### List running containers

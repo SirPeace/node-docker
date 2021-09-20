@@ -18,6 +18,10 @@ RUN npm install
 # Even with bind-mounts this is required, because there will be no bind-mounts in Production
 COPY . .
 
+# Set an env variable of the container equal to the specified env variable or fallback to default
+# Don't forget to specify the right env port in $ docker run -p 3000:<env-port> 
+ENV PORT 3000
+
 # Inform Docker that the container listens on the specified network ports at runtime.
 #
 # This instruction does not actually publish the port. 
@@ -25,7 +29,7 @@ COPY . .
 # the person who runs the container, about which ports are intended to be published. 
 # To actually publish the port when running the container, use the -p flag on docker run to publish and map one or more ports, 
 # or the -P flag to publish all exposed ports and map them to high-order ports.
-EXPOSE 3000
+EXPOSE $PORT
 
 # Execute command in the Docker container
 #? Run time (when running the container)
