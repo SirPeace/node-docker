@@ -20,9 +20,19 @@ $ docker image rm <image>
 **[-d]** Run in the detached mode \
 **[-p]** Bind local port to container port \
 **[--name]** Set the container name \
-**[-v]** Set bind-mount volume between local path and container path
+**[-v]** Declare the volume (*Volumes can overwrite themselves by the path nesting (like css selectors), so to prevent something from being synced (e.g. node_modules) you must declare another, more nested volume*):
 ```
-$ docker run -d -p <port>:<port> --name <name> <image>
+# Bind-mount volume
+-v <local-path>:<container-path> 
+
+# Anonymous volume
+-v <container-path> 
+
+# Sync local directory to /app except for node_modules
+-v $(pwd):/app -v /app/node_modules 
+```
+```
+$ docker run -d -p <port>:<port> -v <path>:<path> -v <path> --name <name> <image>
 ```
 
 ### List running containers

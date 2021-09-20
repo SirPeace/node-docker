@@ -14,6 +14,8 @@ RUN npm install
 #
 # This is done separately from dependencies for optimization reasons.
 # If you change your source code, but not dependencies list, then Docker will only re-run this 5th layer
+#
+# Even with bind-mounts this is required, because there will be no bind-mounts in Production
 COPY . .
 
 # Inform Docker that the container listens on the specified network ports at runtime.
