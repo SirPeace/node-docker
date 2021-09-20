@@ -27,4 +27,4 @@ EXPOSE 3000
 
 # Execute command in the Docker container
 #? Run time (when running the container)
-CMD ["node", "index.js"]
+CMD ["npm", "run", "dev"]
