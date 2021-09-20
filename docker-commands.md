@@ -68,3 +68,10 @@ $ docker logs <container>
 ```
 $ docker volume prune
 ```
+
+### Run services (containers) using docker-compose files
+**[-d]** Run containers in detached mode
+**[--file]** Specify the docker-compose file you want to use
+```
+$ docker-compose --file ./docker-compose.yml up
+```
