@@ -8,5 +8,6 @@ Dockerfile
 .dockerignore
 .git
 .gitignore
+.env
 
 docker-commands.md
