@@ -49,6 +49,7 @@ $ docker ps
 
 ### Delete the container
 **[-f]** Forcefully stop the container before delete
+**[-v]** Delete all volumes for this container
 ```
 $ docker rm -f <container>
 ```
@@ -61,4 +62,9 @@ $ docker exec -it <container> bash
 ### Check the container logs
 ```
 $ docker logs <container>
+```
+
+### Delete all unused volumes
+```
+$ docker volume prune
 ```
