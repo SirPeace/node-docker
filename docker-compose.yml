@@ -1,4 +1,10 @@
 version: "3"
 services: 
-  node-app: 
+  app: 
     build: .
+
+  database: 
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sirpeace
+      - MONGO_INITDB_ROOT_PASSWORD=password

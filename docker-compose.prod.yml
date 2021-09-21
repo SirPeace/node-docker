@@ -1,6 +1,8 @@
 version: "3"
+volumes:
+  production-database:
 services: 
-  node-app: 
+  app: 
     build: 
       context: .
       args: 
@@ -9,3 +11,7 @@ services:
       - 3000:4000
     env_file: ./.env.prod
     command: npm run start
+
+  database:
+    volumes:
+      - production-database:/data/db # Named volume
