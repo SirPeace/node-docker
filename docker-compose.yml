@@ -13,3 +13,6 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=sirpeace
       - MONGO_INITDB_ROOT_PASSWORD=password
+
+  redis:
+    image: redis

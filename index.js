@@ -1,9 +1,14 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const session = require("express-session")
+const redis = require("redis")
+const redisStore = require("connect-redis")(session)
 
 const dbConfig = require('./config/database')
 const postRouter = require("./routes/PostRoutes")
 const userRouter = require("./routes/UserRoutes")
+const redisConfig = require("./config/redis")
+const sessionConfig = require("./config/session")
 
 // Connect to the DB
 const dbUrl = 
@@ -21,17 +26,36 @@ mongoose
     .then(() => console.log('Successfully connected to the database!'))
     .catch(e => console.error(e))
 
-// Routing logic
+let redisClient = redis.createClient({
+    host: redisConfig.URL,
+    port: redisConfig.PORT
+})
+
+// Initialize the app
 const app = express()
 
 app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.send("<h2>Hi There!!!</h2>")
-})
+app.use(
+    session({
+        store: new redisStore({client: redisClient}),
+        secret: sessionConfig.SECRET,
+        cookie: {
+            secure: false,
+            resave: false,
+            saveUninitialized: false,
+            httpOnly: true,
+            maxAge: 30000
+        }
+    })
+)
 
 app.use("/api/v1/posts", postRouter)
 app.use("/api/v1/users", userRouter)
+
+app.get('/', (req, res) => {
+    res.send("<h2>Hi There!!!</h2>")
+})
 
 // Serve application
 const port = process.env.PORT || 3000

@@ -13,6 +13,8 @@ exports.signUp = async (req, res) => {
             password: hashPassword
         })
 
+        req.session.user = newUser
+
         res.status(201).json({
             status: "success",
             data: {
@@ -39,6 +41,8 @@ exports.login = async (req, res) => {
                 message: "Username or password is not correct"
             })
         }
+
+        req.session.user = user
 
         return res.status(200).json({
             status: "success"
