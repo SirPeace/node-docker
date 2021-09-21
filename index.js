@@ -1,24 +1,29 @@
 const app = require("express")()
 const mongoose = require("mongoose")
 
-const dbService = "database"
-const dbServicePort = 27017
-const dbUsername = "sirpeace"
-const dbPassword = "password"
+const dbConfig = require('./config/database')
+
+// Connect to the DB
+const dbUrl = 
+    `mongodb://${dbConfig.DATABASE_USERNAME}:${dbConfig.DATABASE_PASSWORD}` +
+    `@${dbConfig.DATABASE_IP}:${dbConfig.DATABASE_PORT}` +
+    "/?authSource=admin"
 
 mongoose
-    .connect(
-        `mongodb://${dbUsername}:${dbPassword}` +
-        `@${dbService}:${dbServicePort}` +
-        "/?authSource=admin"
-    )
+    .connect(dbUrl, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        // useFindAndModify: false,
+    })
     .then(() => console.log('Successfully connected to the database!'))
     .catch(e => console.error(e))
 
+// Routing logic
 app.get('/', (req, res) => {
     res.send("<h2>Hi There!!!</h2>")
 })
 
+// Serve application
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
