@@ -1,12 +1,14 @@
 version: "3"
-services: 
+services:
+  nginx:
+    ports:
+      - 3000:80
+
   app:
     build: 
       context: .
       args: 
         NODE_ENV: development
-    ports:
-      - 3000:3000
     volumes:
       - ./:/app # Bind-mount volume
       - /app/node_modules # Anonymous volume

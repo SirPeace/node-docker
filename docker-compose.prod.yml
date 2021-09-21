@@ -2,13 +2,15 @@ version: "3"
 volumes:
   production-database:
 services: 
+  nginx:
+    ports:
+      - 80:80
+
   app: 
     build: 
       context: .
       args: 
         NODE_ENV: production
-    ports:
-      - 3000:4000
     env_file: ./.env.prod
     command: npm run start
 

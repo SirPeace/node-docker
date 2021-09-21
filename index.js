@@ -34,6 +34,8 @@ let redisClient = redis.createClient({
 // Initialize the app
 const app = express()
 
+app.enable("trust proxy")
+
 app.use(express.json())
 
 app.use(
@@ -53,7 +55,7 @@ app.use(
 app.use("/api/v1/posts", postRouter)
 app.use("/api/v1/users", userRouter)
 
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
     res.send("<h2>Hi There!!!</h2>")
 })
 
