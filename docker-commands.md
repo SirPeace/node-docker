@@ -71,7 +71,8 @@ $ docker volume prune
 
 ### Run services (containers) using docker-compose files
 **[-d]** Run containers in detached mode \
-**[--file] [-f]** Specify the docker-compose file you want to use
+**[--file] [-f]** Specify the docker-compose file you want to use \
+**[-V]** Create new volumes (if running `up` multiple times)
 ```
 $ docker-compose --file ./docker-compose.yml up
 ```
