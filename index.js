@@ -9,6 +9,7 @@ const dbUrl =
     `@${dbConfig.DATABASE_IP}:${dbConfig.DATABASE_PORT}` +
     "/?authSource=admin"
 
+// Mongoose has built-in connection retry functionality
 mongoose
     .connect(dbUrl, {
         useNewUrlParser: true,

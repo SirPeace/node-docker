@@ -5,6 +5,8 @@ services:
     environment:
       - DATABASE_USERNAME=sirpeace
       - DATABASE_PASSWORD=password
+    depends_on: 
+      - database
 
   database: 
     image: mongo
