@@ -21,8 +21,6 @@ $ docker image rm <image>
 **[-p]** Bind local port to container port \
 **[--name]** Set the container name \
 **[-v]** Declare the volume (*Volumes can overwrite themselves by the path nesting (like css selectors), so to prevent something from being synced (e.g. node_modules) you must declare another, more nested volume*):
-**[--env]** Pass the env parameter (e.g. PORT=4000)
-**[--env-file]** Pass the path to .env file (e.g. ./.env)
 ```
 # Bind-mount volume
 -v <local-path>:<container-path> 
@@ -36,6 +34,8 @@ $ docker image rm <image>
 # Read-only volume (can't modify files on our local machine)
 -v $(pwd):/app:ro
 ```
+**[--env]** Pass the env parameter (e.g. PORT=4000) \
+**[--env-file]** Pass the path to .env file (e.g. ./.env)
 
 ```
 $ docker run -d -p <port>:<port> -v <path>:<path> -v <path> --name <name> --env-file <path> <image>
@@ -48,7 +48,7 @@ $ docker ps
 ```
 
 ### Delete the container
-**[-f]** Forcefully stop the container before delete
+**[-f]** Forcefully stop the container before delete \
 **[-v]** Delete all volumes for this container
 ```
 $ docker rm -f <container>
@@ -70,8 +70,8 @@ $ docker volume prune
 ```
 
 ### Run services (containers) using docker-compose files
-**[-d]** Run containers in detached mode
-**[--file]** Specify the docker-compose file you want to use
+**[-d]** Run containers in detached mode \
+**[--file] [-f]** Specify the docker-compose file you want to use
 ```
 $ docker-compose --file ./docker-compose.yml up
 ```
