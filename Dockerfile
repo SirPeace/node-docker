@@ -8,7 +8,11 @@ COPY package.json .
 
 # Execute command in the Docker container
 #? Build time (when building the container)
-RUN npm install
+ARG NODE_ENV
+RUN if [ "$NODE_ENV" = "development" ]; \
+        then npm install; \
+        else npm install --only=production; \
+    fi
 
 # Copy else local files into the /app Docker container directory
 #
