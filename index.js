@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const session = require("express-session")
 const redis = require("redis")
 const redisStore = require("connect-redis")(session)
+const cors = require("cors")
 
 const dbConfig = require('./config/database')
 const postRouter = require("./routes/PostRoutes")
@@ -37,6 +38,7 @@ const app = express()
 app.enable("trust proxy")
 
 app.use(express.json())
+app.use(cors())
 
 app.use(
     session({
