@@ -60,6 +60,7 @@ $ docker exec -it <container> bash
 ```
 
 ### Check the container logs
+**[-f]** Follow the logging process
 ```
 $ docker logs <container>
 ```
@@ -71,8 +72,10 @@ $ docker volume prune
 
 ### Run services (containers) using docker-compose files
 **[-d]** Run containers in detached mode \
+**[--build]** Rebuild images for services where **build** is specified \
 **[--file] [-f]** Specify the docker-compose file you want to use \
-**[-V]** Create new volumes (if running `up` multiple times)
+**[-V]** Create new volumes (if running `up` multiple times) \
+**[--scale]** Scale the specified service up to N times
 ```
-$ docker-compose --file ./docker-compose.yml up
+$ docker-compose -f docker-compose.yml --scale app=2 up
 ```

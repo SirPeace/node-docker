@@ -57,6 +57,7 @@ app.use("/api/v1/users", userRouter)
 
 app.get('/api/v1', (req, res) => {
     res.send("<h2>Hi There!!!</h2>")
+    console.log("Request handled")
 })
 
 // Serve application
