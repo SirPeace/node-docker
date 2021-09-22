@@ -8,17 +8,11 @@ services:
 
   app: 
     build: .
-    environment:
-      - DATABASE_USERNAME=sirpeace
-      - DATABASE_PASSWORD=password
     depends_on: 
       - database
 
   database: 
     image: mongo
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=sirpeace
-      - MONGO_INITDB_ROOT_PASSWORD=password
 
   redis:
     image: redis

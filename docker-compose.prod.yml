@@ -11,9 +11,16 @@ services:
       context: .
       args: 
         NODE_ENV: production
-    env_file: ./.env.prod
     command: npm run start
+    environment:
+      - NODE_ENV=production
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - SESSION_SECRET=${SESSION_SECRET}
 
   database:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
     volumes:
       - production-database:/data/db # Named volume

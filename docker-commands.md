@@ -75,7 +75,8 @@ $ docker volume prune
 **[--build]** Rebuild images for services where **build** is specified \
 **[--file] [-f]** Specify the docker-compose file you want to use \
 **[-V]** Create new anonymous volumes (if running `up` multiple times) \
-**[--scale]** Scale the specified service up to N times
+**[--scale]** Scale the specified service up to N times \
+**[--no-deps]** Do not run service dependencies
 ```
-$ docker-compose -f docker-compose.yml --scale app=2 up
+$ docker-compose -f docker-compose.yml --scale app=2 up [service]
 ```

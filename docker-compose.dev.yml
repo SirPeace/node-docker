@@ -9,10 +9,13 @@ services:
       context: .
       args: 
         NODE_ENV: development
+    command: npm run dev
+    env_file: ./.env
     volumes:
       - ./:/app # Bind-mount volume
       - /app/node_modules # Anonymous volume
-    env_file: ./.env.dev
-    command: npm run dev
-    environment: 
-      - SESSION_SECRET="don't get cocky"
+    
+  database:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=sirpeace
+      - MONGO_INITDB_ROOT_PASSWORD=password
