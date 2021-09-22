@@ -74,7 +74,7 @@ $ docker volume prune
 **[-d]** Run containers in detached mode \
 **[--build]** Rebuild images for services where **build** is specified \
 **[--file] [-f]** Specify the docker-compose file you want to use \
-**[-V]** Create new volumes (if running `up` multiple times) \
+**[-V]** Create new anonymous volumes (if running `up` multiple times) \
 **[--scale]** Scale the specified service up to N times
 ```
 $ docker-compose -f docker-compose.yml --scale app=2 up
